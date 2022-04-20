@@ -1,11 +1,12 @@
-from django.test import unittest
+
+from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 from selenium.common.exceptions import WebDriverException
 
 MAX_WAIT = 3
-class PageTest(unittest.TestCase):
+class PageTest(LiveServerTestCase):
 
 
 
@@ -39,7 +40,7 @@ class PageTest(unittest.TestCase):
 	 self.assertEqual(inputmember.get_attribute('placeholder'),'Enter your Fullname')
 	 inputmember.click()
 	 time.sleep(1)
-	 inputmember.send_keys('Ryan ')
+	 inputmember.send_keys('Leonalyn Maglines')
 	 
 	 time.sleep(1)
 	 
