@@ -1,6 +1,13 @@
+# from django.shortcuts import render
+# from django.http import HttpResponse
+
+# def MainPage(request):
+# 	return render (request, 'mainpage.html')
+
 from django.shortcuts import render
-from django.http import  HttpResponse
+from django.http import HttpResponse
 
 def MainPage(request):
-	return HttpResponse('<html><title>4ps Monitoring System</title></html>')
-# Create your views here.
+	# if request.method == 'POST':
+	# 	return HttpResponse (request.POST['attribute'])
+	return render(request, 'mainpage.html', {'NewName': request.POST.get('attribute'),})
