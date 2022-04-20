@@ -1,60 +1,88 @@
-# from selenium import webdriver
-# import unittest
-
-# class PageTest(unittest.TestCase):
-# 	def setUp(self):
-# 		self.browser = webdriver.Firefox()
-# 	#def tearDown(self):
-# 		#self.browser.quit()
-# 	def test_browser_title(self):
-# 		self.browser.get('http://localhost:8000')
-# 		self.assertIn('Philikula',self.browser.title)
-# 		#self.fail('Finish the test!')
-# if __name__ == '__main__':
-# 	unittest.main(warnings='ignore')
-
+from django.test import unittest
 from selenium import webdriver
-import unittest
 from selenium.webdriver.common.keys import Keys
 import time
+from selenium.common.exceptions import WebDriverException
 
+MAX_WAIT = 3
 class PageTest(unittest.TestCase):
+
+
+
+	def wait_for_table(self, row_text):        
+           start_time = time.time()
+           while True:  
+               try:                
+                   table = self.browser.find_element_by_id('id_table')                  
+                   rows = table.find_elements_by_tag_name('tr')                
+                   self.assertIn(row_text, [row.text for row in rows])
+                   return
+               except (AssertionError, WebDriverException) as e:  
+                   if time.time() - start_time > MAX_WAIT:  
+      	               raise e                  
+                   time.sleep(0.5)  
+                 
 	def setUp(self):
-		self.browser = webdriver.Firefox()
-		
-	def test_start_list_and_retrieve_it(self):
-		self.browser.get('http://localhost:8000')
-		self.assertIn('4PS MONITORING SYSTEM', self.browser.title)
-		headerText = self.browser.find_element_by_tag_name('h1').text
-		self.assertIn('Feedback Form', headerText)
-		inpName = self.browser.find_element_by_id('applicantName')
-		btn_Pindot_button = self.browser.find_element_by_id('btnPindot')
-		self.assertEqual(inpName.get_attribute('placeholder'),'Enter your name here.')
-		inpName.click()
-		inpName.send_keys('1: Mr.Jim_Guy')
-		time.sleep(1)
-		btn_Pindot_button.click()
-		time.sleep(1)
-		 
-		'''S
-		inputbox = self.browser.find_element_by_id('idNewEntry')
-		self.assertEqual(inputbox.get_attribute('placeholder')), 'Persons name you have'
-		inputbox.send_keys('Mickey Mouse')
-		inputbox.send_keys(Keys.ENTER)
-		time.sleep(1)
-		table = self.browser.find_element_by_id('idListTable')
-		rows = table.find_element_by_tag_name('tr')
-		self.assertTrue(any(row.text == '1: Mickey Mouse'))
-		'''
-		# table = self.browser.find_element_by_id('registryTable')
-		# rows = table.find_elements_by_tag_name('tr')
-		#self.assertTrue(any(rows.text == '1: Mr.Jim_Guy'), "No Table Here!")
-		#self.assertIn('1: Mr.Jim_Guy', [rows.text for rows in rows])
+	 self.browser = webdriver.Firefox()
 
-	def checking_if_in_table_list(self,row_test):
-		table = self.browser.find_element_by_id('registryTable')
-		rows = table.find_elements_by_tag_name('tr')
-		self.assertIn('1: Mr.Jim_Guy', [rows.text for rows in rows])
+	def test_browser_title(self):
+	 self.browser.get('http://localhost:8000/')
+	 #self.browser.get(self.live_server_url)
+	 self.assertIn('MEMBER FORM',self.browser.title)
+	 header_text = self.browser.find_element_by_tag_name('h1').text
+	 self.assertIn('MEMBER FORM', header_text)
+	 
+	 
+	 
+	
+	 inputmember = self.browser.find_element_by_id('member')
+	 self.assertEqual(inputmember.get_attribute('placeholder'),'Enter your Fullname')
+	 inputmember.click()
+	 time.sleep(1)
+	 inputmember.send_keys('Ryan ')
+	 
+	 time.sleep(1)
+	 
+	 
+	 inputaddress = self.browser.find_element_by_id('address')
+	 self.assertEqual(inputaddress.get_attribute('placeholder'),'Enter your Address')
+	 inputaddress.click()
+	 time.sleep(1)
+	 inputaddress.send_keys('Brgy padios')
+	 time.sleep(1)
+	 
+	 
+	 inputage = self.browser.find_element_by_id('age')
+	 self.assertEqual(inputage.get_attribute('placeholder'),'Enter your Age')
+	 inputage.click()
+	 time.sleep(1)
+	 inputage.send_keys('22 yrs. old')
+	 time.sleep(1)
+	 
+	
+	 inputdswd = self.browser.find_element_by_id('dswd')
+	 self.assertEqual(inputdswd.get_attribute('placeholder'),'ID Number')
+	 inputdswd.click()
+	 time.sleep(1)
+	 inputdswd.send_keys('0000111')
+	 time.sleep(1)
+	 
+	 
+	 inputphone = self.browser.find_element_by_id('cellphone')
+	 self.assertEqual(inputphone.get_attribute('placeholder'),'Cellphone Number')
+	 inputphone.click()
+	 time.sleep(1)
+	 inputphone.send_keys('09095567845')
+	 time.sleep(1)
 
-if __name__ == '__main__':
-	unittest.main(warnings='ignore')
+	 inputday = self.browser.find_element_by_id('member')
+	 self.assertEqual(inputday.get_attribute('placeholder'),'How many')
+	 inputphone.click()
+	 time.sleep(1)
+	 inputphone.send_keys('3')
+	 time.sleep(1)
+	 
+	 btnContinue = self.browser.find_element_by_id('btnF')
+	 btnContinue.click()
+	 time.sleep(2)
+	 
