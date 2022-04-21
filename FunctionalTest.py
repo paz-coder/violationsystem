@@ -36,7 +36,13 @@ class PageTest(unittest.TestCase):
 		time.sleep(1)
 		btn_Pindot_button.click()
 		time.sleep(1)
-		 
+		
+		inputaddress = self.browser.find_element_by_id('add')
+	    inputaddress.click()
+	    inputaddress.send_keys('Blk 13 lot 10 brgy Dimawari')
+	    time.sleep(1)
+	    btn_Pindot_button.click()
+	    time.sleep(1)
 
 	def checking_if_in_table_list(self,row_test):
 		table = self.browser.find_element_by_id('registryTable')
