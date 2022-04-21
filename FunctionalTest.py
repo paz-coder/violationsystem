@@ -15,10 +15,10 @@ class PageTest(unittest.TestCase):
 
 	def test_start_list_and_retrieve_it(self):
 	    self.browser.get('http://localhost:8000/')
-	    self.assertIn("MEMBER FORM",self.browser.title)
+	    self.assertIn("4PS MONITORING SYSTEM",self.browser.title)
 
 	    header_Text = self.browser.find_element_by_tag_name('h1')
-	    self.assertIn("MEMBER FORM", header_Text)
+	    self.assertIn("4PS MONITORING SYSTEM", header_Text)
 	 
 	 
 	    
