@@ -29,32 +29,19 @@ class PageTest(unittest.TestCase):
 		self.assertIn('Member Form', headerText)
 		inpName = self.browser.find_element_by_id('applicantName')
 		btn_Pindot_button = self.browser.find_element_by_id('btnPindot')
+		
 		self.assertEqual(inpName.get_attribute('placeholder'),'Enter your name here.')
 		inpName.click()
-		inpName.send_keys('1: Mr.Jim_Guy')
+		inpName.send_keys('Mr.Jim_Guy')
 		time.sleep(1)
 		btn_Pindot_button.click()
 		time.sleep(1)
 		 
-		'''S
-		inputbox = self.browser.find_element_by_id('idNewEntry')
-		self.assertEqual(inputbox.get_attribute('placeholder')), 'Persons name you have'
-		inputbox.send_keys('Mickey Mouse')
-		inputbox.send_keys(Keys.ENTER)
-		time.sleep(1)
-		table = self.browser.find_element_by_id('idListTable')
-		rows = table.find_element_by_tag_name('tr')
-		self.assertTrue(any(row.text == '1: Mickey Mouse'))
-		'''
-		# table = self.browser.find_element_by_id('registryTable')
-		# rows = table.find_elements_by_tag_name('tr')
-		#self.assertTrue(any(rows.text == '1: Mr.Jim_Guy'), "No Table Here!")
-		#self.assertIn('1: Mr.Jim_Guy', [rows.text for rows in rows])
 
 	def checking_if_in_table_list(self,row_test):
 		table = self.browser.find_element_by_id('registryTable')
 		rows = table.find_elements_by_tag_name('tr')
-		self.assertIn('1: Mr.Jim_Guy', [rows.text for rows in rows])
+		self.assertIn('Mr.Jim_Guy', [rows.text for rows in rows])
 
 if __name__ == '__main__':
 	unittest.main(warnings='ignore')
