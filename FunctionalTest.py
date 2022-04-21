@@ -39,11 +39,11 @@ class PageTest(unittest.TestCase):
 	 
 	inputaddress = self.browser.find_element_by_id('address')
 	self.assertEqual(inputaddress.get_attribute('placeholder'),'Enter your Address')
-    inputaddress.click()
-    time.sleep(1)
-    inputaddress.send_keys('Brgy padios')
-    time.sleep(1)
-	 
+	inputaddress.click()
+	time.sleep(1)
+	inputaddress.send_keys('Brgy padios')
+	time.sleep(1)
+
 	inputage = self.browser.find_element_by_id('age')
 	self.assertEqual(inputage.get_attribute('placeholder'),'Enter your Age')
 	inputage.click()
