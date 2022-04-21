@@ -18,7 +18,7 @@ class PageTest(unittest.TestCase):
       	               raise e                  
                    time.sleep(0.5)  
 
-    def setUp(self):
+                   def setUp(self):
 	 self.browser = webdriver.Firefox()
 
 	def test_browser_title(self):
