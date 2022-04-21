@@ -1,65 +1,60 @@
+# from selenium import webdriver
+# import unittest
+
+# class PageTest(unittest.TestCase):
+# 	def setUp(self):
+# 		self.browser = webdriver.Firefox()
+# 	#def tearDown(self):
+# 		#self.browser.quit()
+# 	def test_browser_title(self):
+# 		self.browser.get('http://localhost:8000')
+# 		self.assertIn('Philikula',self.browser.title)
+# 		#self.fail('Finish the test!')
+# if __name__ == '__main__':
+# 	unittest.main(warnings='ignore')
+
 from selenium import webdriver
 import unittest
 from selenium.webdriver.common.keys import Keys
 import time
 
-
 class PageTest(unittest.TestCase):
 	def setUp(self):
-	    self.browser = webdriver.Firefox()
-
-	def test_browser_title(self):
-	    self.browser.get('http://localhost:8000/')
-	    self.assertIn("4PS MONITORING SYSTEM",self.browser.title)
-
-	def check_for_rows_in_list_table(self,row_text):
-	    table = self.browser.find_element_by_id('listTable')
-	    rows = table.find_elements_by_tag_name('tr')
-	    self.assertIn(row_text, [row.text for row in rows])
-
+		self.browser = webdriver.Firefox()
+		
 	def test_start_list_and_retrieve_it(self):
-	    self.browser.get('http://localhost:8000/')
-	    self.assertIn("4PS MONITORING SYSTEM",self.browser.title)
+		self.browser.get('http://localhost:8000')
+		self.assertIn('Chrono Intelligence - World News', self.browser.title)
+		headerText = self.browser.find_element_by_tag_name('h1').text
+		self.assertIn('Feedback Form', headerText)
+		inpName = self.browser.find_element_by_id('applicantName')
+		btn_Pindot_button = self.browser.find_element_by_id('btnPindot')
+		self.assertEqual(inpName.get_attribute('placeholder'),'Enter your name here.')
+		inpName.click()
+		inpName.send_keys('1: Mr.Jim_Guy')
+		time.sleep(1)
+		btn_Pindot_button.click()
+		time.sleep(1)
+		 
+		'''S
+		inputbox = self.browser.find_element_by_id('idNewEntry')
+		self.assertEqual(inputbox.get_attribute('placeholder')), 'Persons name you have'
+		inputbox.send_keys('Mickey Mouse')
+		inputbox.send_keys(Keys.ENTER)
+		time.sleep(1)
+		table = self.browser.find_element_by_id('idListTable')
+		rows = table.find_element_by_tag_name('tr')
+		self.assertTrue(any(row.text == '1: Mickey Mouse'))
+		'''
+		# table = self.browser.find_element_by_id('registryTable')
+		# rows = table.find_elements_by_tag_name('tr')
+		#self.assertTrue(any(rows.text == '1: Mr.Jim_Guy'), "No Table Here!")
+		#self.assertIn('1: Mr.Jim_Guy', [rows.text for rows in rows])
 
-	    header_Text = self.browser.find_element_by_tag_name('h1')
-	    self.assertIn("4PS MONITORING SYSTEM", header_Text)
-	 
-	 
-	    
+	def checking_if_in_table_list(self,row_test):
+		table = self.browser.find_element_by_id('registryTable')
+		rows = table.find_elements_by_tag_name('tr')
+		self.assertIn('1: Mr.Jim_Guy', [rows.text for rows in rows])
 
-	    inputowner = self.browser.find_element_by_id('owner')
-	    self.assertEqual(inputowner.get_attribute('placeholder'), "owner")
-	    inputowner.click()
-	    inputowner.send_keys('Leonalyn Maglines')
-	    time.sleep(1)
-	    
-	    
-	    inputaddress = self.browser.find_element_by_id('address')
-	    inputaddress.click()
-	    inputaddress.send_keys('Blk 13 lot 10 brgy Dimawari')
-	    time.sleep(1)
-	  
-	    inputpet = self.browser.find_element_by_id('pet')
-	    inputpet.click()
-	    inputpet.send_keys('Shana')
-	    time.sleep(1)
-	 
-	    inputbreed = self.browser.find_element_by_id('breed')
-	    inputbreed.click()
-	    inputbreed.send_keys('Puspin')
-	    time.sleep(1)
-	 
-	    inputday = self.browser.find_element_by_id('birthday')
-	    inputday.click()
-	    inputday.send_keys('08/22/2013')
-	    time.sleep(1)
-	 
-	    btnContinue = self.browser.find_element_by_id('btnContinue')
-	    btnContinue.click()
-	    time.sleep(2)
-	 
-
-
-	
-if __name__=='__main__':
-	 	unittest.main()
+if __name__ == '__main__':
+	unittest.main(warnings='ignore')

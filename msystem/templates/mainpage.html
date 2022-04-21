@@ -1,49 +1,21 @@
-<!DOCTYPE html> 
-<html> 
+<!DOCTYPE html>
+<html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>4PS MONITORING SYSTEM</title>
-
-
-<style> 
-
-    
-</style> 
-</head>  
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=Playfair+Display+SC&display=swap" rel="stylesheet">
-<body>  
-     <h1>MEMBER FORM</h1>
-
-     <form method="POST" action="/msystem/{{ list.id }}/add_item">
-     <label style="font-family:'Original Surfer', cursive ;"> Pet's Name : </label> 
-     <input type="text" id="pet"placeholder="Enter your pet name" name="pet">
-     <label style="font-family:'Original Surfer', cursive ;"> Breed : </label> 
-     <input type="text" id="breed"placeholder="Type of breed" name="breed" >
-     <label style="font-family:'Original Surfer', cursive ;"> Birthday : </label> 
-     <input type="text" id="birthday"placeholder="MM/DD/YYYY" name="birthday" >
-    {% csrf_token %}
-
-    <button type="submit" id="btnContinue" name="btnContinue"style="font-size: 16px;">Continue</button> 
-    </form> 
- 
-           
-<table id="id_table" name='tr'>
-      
-          
-       <tr>
-       {% for item in list.item_set.all %} 
-       <! -- {{ forloop.counter }}:  -->
-               <td>{{ item.npet }}</td>
-   
-         <td>{{ item.nBreed }}</td>
-        
-        <td>{{ item.nDay}}</td>
-          </tr>
-        {% endfor %}
-    </table>
-
-</body>   
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Chrono Intelligence - World News</title>
+</head>
+	<body>
+		<form method="POST">
+		{% csrf_token %}
+		<h1>Feedback Form</h1>
+		<label>Name:</label><input type="text" id="applicantName" size="30" name="attribute" placeholder="Enter your name here.">
+		<input id="btnPindot"type="submit" name="btnPindot" value="Submit"/>
+	</form>
+	<table id="registryTable">
+		<tr>
+			<td>1: {{NewName}}</td>
+		</tr>
+	</table>		
+	</body>	
 </html>
-
- 
