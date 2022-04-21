@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from Msystem.models import Item, List
+from msystem.models import Item, List
 
 
 def home_page(request):
