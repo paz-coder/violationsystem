@@ -1,75 +1,65 @@
-import unittest
 from selenium import webdriver
+import unittest
 from selenium.webdriver.common.keys import Keys
 import time
 
-class HomePageTest(unittest.TestCase):
-	def wait_for_table(self, row_text):        
-           start_time = time.time()
-           while True:  
-               try:                
-                   table = self.browser.find_element_by_id('id_table')                  
-                   rows = table.find_elements_by_tag_name('tr')                
-                   self.assertIn(row_text, [row.text for row in rows])
-                   return
-               except (AssertionError, WebDriverException) as e:  
-                   if time.time() - start_time > MAX_WAIT:  
-      	               raise e                  
-                   time.sleep(0.5)  
 
-                   def setUp(self):
-                   	self.browser = webdriver.Firefox()
-                   	def test_browser_title(self):
-                   		self.browser.get('http://localhost:8000/')
-                   		#self.browser.get(self.live_server_url)
-                   		self.assertIn('MEMBER FORM',self.browser.title)
-                   		header_text = self.browser.find_element_by_tag_name('h1').text
-                   		self.assertIn('MEMBER FORM', header_text)
+class PageTest(unittest.TestCase):
+	def setUp(self):
+	    self.browser = webdriver.Firefox()
+
+	def test_browser_title(self):
+	    self.browser.get('http://localhost:8000/')
+	    self.assertIn("Owner's Registration",self.browser.title)
+
+	def check_for_rows_in_list_table(self,row_text):
+	    table = self.browser.find_element_by_id('listTable')
+	    rows = table.find_elements_by_tag_name('tr')
+	    self.assertIn(row_text, [row.text for row in rows])
+
+	def test_start_list_and_retrieve_it(self):
+	    self.browser.get('http://localhost:8000/')
+	    self.assertIn("Owner's Registration",self.browser.title)
+
+	    header_Text = self.browser.find_element_by_tag_name('h1')
+	    self.assertIn("Owner's Registration", header_Text)
 	 
 	 
+	    
+
+	    inputowner = self.browser.find_element_by_id('owner')
+	    self.assertEqual(inputowner.get_attribute('placeholder'), "owner")
+	    inputowner.click()
+	    inputowner.send_keys('Leonalyn Maglines')
+	    time.sleep(1)
+	    
+	    
+	    inputaddress = self.browser.find_element_by_id('address')
+	    inputaddress.click()
+	    inputaddress.send_keys('Blk 13 lot 10 brgy Dimawari')
+	    time.sleep(1)
+	  
+	    inputpet = self.browser.find_element_by_id('pet')
+	    inputpet.click()
+	    inputpet.send_keys('Shana')
+	    time.sleep(1)
 	 
+	    inputbreed = self.browser.find_element_by_id('breed')
+	    inputbreed.click()
+	    inputbreed.send_keys('Puspin')
+	    time.sleep(1)
+	 
+	    inputday = self.browser.find_element_by_id('birthday')
+	    inputday.click()
+	    inputday.send_keys('08/22/2013')
+	    time.sleep(1)
+	 
+	    btnContinue = self.browser.find_element_by_id('btnContinue')
+	    btnContinue.click()
+	    time.sleep(2)
+	 
+
+
 	
-	inputmember = self.browser.find_element_by_id('member')
-	self.assertEqual(inputmember.get_attribute('placeholder'),'Enter your Full name')
-	inputmember.click()
-	time.sleep(1)
-	inputmember.send_keys('Leonalyn Maglines')
-	time.sleep(1)
-	 
-	inputaddress = self.browser.find_element_by_id('address')
-	self.assertEqual(inputaddress.get_attribute('placeholder'),'Enter your Address')
-	inputaddress.click()
-	time.sleep(1)
-	inputaddress.send_keys('Brgy padios')
-	time.sleep(1)
-
-	inputage = self.browser.find_element_by_id('age')
-	self.assertEqual(inputage.get_attribute('placeholder'),'Enter your Age')
-	inputage.click()
-	time.sleep(1)
-	inputage.send_keys('22 yrs. old')
-	time.sleep(1)
-
-	inputdswd = self.browser.find_element_by_id('dswd')
-	self.assertEqual(inputdswd.get_attribute('placeholder'),'ID Number')
-	inputdswd.click()
-	time.sleep(1)
-	inputdswd.send_keys('0000111')
-	time.sleep(1)
-
-	inputphone = self.browser.find_element_by_id('cellphone')
-	self.assertEqual(inputphone.get_attribute('placeholder'),'Cellphone Number')
-	inputphone.click()
-	time.sleep(1)
-	inputphone.send_keys('09095567845')
-	time.sleep(1)
-
-	inputday = self.browser.find_element_by_id('member')
-	self.assertEqual(inputday.get_attribute('placeholder'),'How many')
-	inputphone.click()
-	time.sleep(1)
-	inputphone.send_keys('3')
-	time.sleep(1)
-
-	btnContinue = self.browser.find_element_by_id('btnF')
-	btnContinue.cl
+if __name__=='__main__':
+	 	unittest.main()
