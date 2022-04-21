@@ -30,7 +30,7 @@ class PageTest(unittest.TestCase):
 	 
 	
 	inputmember = self.browser.find_element_by_id('member')
-	self.assertEqual(inputmember.get_attribute('placeholder'),'Enter your Fullname')
+	self.assertEqual(inputmember.get_attribute('placeholder'),'Enter your Full name')
 	inputmember.click()
 	time.sleep(1)
 	inputmember.send_keys('Leonalyn Maglines')
