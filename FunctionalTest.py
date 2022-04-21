@@ -8,10 +8,6 @@ class PageTest(unittest.TestCase):
 	def setUp(self):
 	    self.browser = webdriver.Firefox()
 
-	def test_browser_title(self):
-	    self.browser.get('http://localhost:8000/')
-	    self.assertIn("MEMBER FORM",self.browser.title)
-
 	def check_for_rows_in_list_table(self,row_text):
 	    table = self.browser.find_element_by_id('listTable')
 	    rows = table.find_elements_by_tag_name('tr')
