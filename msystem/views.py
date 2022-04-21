@@ -14,5 +14,5 @@ def MainPage(request):
 def New_list(request):
 	# if request.method == 'POST':
 	# 	return HttpResponse (request.POST['attribute'])
-	return render(request, 'mainpage.html', {'address': request.POST.get('add'),})
+	return render(request, 'mainpage.html', {'Newaddress': request.POST.get('add'),})
 
