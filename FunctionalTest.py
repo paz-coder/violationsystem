@@ -29,10 +29,10 @@ class PageTest(unittest.TestCase):
 		self.assertIn('Member Form', headerText)
 		inpName = self.browser.find_element_by_id('applicantName')
 		btn_Pindot_button = self.browser.find_element_by_id('btnPindot')
-		
-		self.assertEqual(inpName.get_attribute('placeholder'),'Enter your name here.')
+
+		self.assertEqual(inpName.get_attribute('placeholder'),'Enter your Full Name.')
 		inpName.click()
-		inpName.send_keys('Mr.Jim_Guy')
+		inpName.send_keys('rayray')
 		time.sleep(1)
 		btn_Pindot_button.click()
 		time.sleep(1)
@@ -41,7 +41,7 @@ class PageTest(unittest.TestCase):
 	def checking_if_in_table_list(self,row_test):
 		table = self.browser.find_element_by_id('registryTable')
 		rows = table.find_elements_by_tag_name('tr')
-		self.assertIn('Mr.Jim_Guy', [rows.text for rows in rows])
+		self.assertIn('rayray', [rows.text for rows in rows])
 
 if __name__ == '__main__':
 	unittest.main(warnings='ignore')
