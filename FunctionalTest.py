@@ -10,7 +10,7 @@ class PageTest(unittest.TestCase):
 
 	def test_browser_title(self):
 	    self.browser.get('http://localhost:8000/')
-	    self.assertIn("Owner's Registration",self.browser.title)
+	    self.assertIn("MEMBER FORM",self.browser.title)
 
 	def check_for_rows_in_list_table(self,row_text):
 	    table = self.browser.find_element_by_id('listTable')
@@ -19,10 +19,10 @@ class PageTest(unittest.TestCase):
 
 	def test_start_list_and_retrieve_it(self):
 	    self.browser.get('http://localhost:8000/')
-	    self.assertIn("Owner's Registration",self.browser.title)
+	    self.assertIn("MEMBER FORM",self.browser.title)
 
 	    header_Text = self.browser.find_element_by_tag_name('h1')
-	    self.assertIn("Owner's Registration", header_Text)
+	    self.assertIn("MEMBER FORM", header_Text)
 	 
 	 
 	    
@@ -62,4 +62,4 @@ class PageTest(unittest.TestCase):
 
 	
 if __name__=='__main__':
-	 	unittest.main()
+	 	unittest.main(warnings='ignore')
