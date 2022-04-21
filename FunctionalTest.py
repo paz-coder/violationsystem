@@ -33,9 +33,7 @@ class PageTest(unittest.TestCase):
 		self.assertEqual(inpname.get_attribute('placeholder'),'Enter your Full Name.')
 		inpname.click()
 		inpname.send_keys('rayray')
-		time.sleep(1)
-		btn_Pindot_button.click()
-		time.sleep(1)
+		
 		
 		btn_add_button = self.browser.find_element_by_id('btna')
 		self.assertEqual(inputaddress.get_attribute('placeholder'),'Enter your Address.')
