@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
-class PageTest(unittest.TestCase):
+class HomePageTest(TestCase):
 	def wait_for_table(self, row_text):        
            start_time = time.time()
            while True:  
