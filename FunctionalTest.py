@@ -5,7 +5,7 @@ import time
 from selenium.common.exceptions import WebDriverException
 
 class PageTest(unittest.TestCase):
- def wait_for_table(self, row_text):        
+	def wait_for_table(self, row_text):        
            start_time = time.time()
            while True:  
                try:                
@@ -17,8 +17,8 @@ class PageTest(unittest.TestCase):
                    if time.time() - start_time > MAX_WAIT:  
       	               raise e                  
                    time.sleep(0.5)  
-                 
-	def setUp(self):
+
+    def setUp(self):
 	 self.browser = webdriver.Firefox()
 
 	def test_browser_title(self):
