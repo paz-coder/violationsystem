@@ -11,4 +11,3 @@ def MainPage(request):
 	# if request.method == 'POST':
 	# 	return HttpResponse (request.POST['attribute'])
 	return render(request, 'mainpage.html', {'NewName': request.POST.get('attribute'),})
-	return render(request, 'mainpage.html', {'Name': request.POST.get('attribute'),})
