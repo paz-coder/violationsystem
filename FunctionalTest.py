@@ -37,6 +37,8 @@ class PageTest(unittest.TestCase):
 		btn_Pindot_button.click()
 		time.sleep(1)
 		
+		btn_add_button = self.browser.find_element_by_id('btna')
+		self.assertEqual(inputaddress.get_attribute('placeholder'),'Enter your Address.')
 		inputaddress = self.browser.find_element_by_id('add')
 		inputaddress.click()
 		inputaddress.send_keys('Blk 13 lot 10 brgy Dimawari')
