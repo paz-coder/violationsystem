@@ -30,3 +30,8 @@ def test_responding_post_request(self):
 		resp = self.client.post('/', data={'attribute' :'NewName'})
 		self.assertIn('NewName', resp.content.decode())
 		self.assertInTemplateUsed(resp, 'mainpage.html')
+def test_responding_post_request(self):
+		resp = self.client.post('/', data={'add' :'address'})
+		self.assertIn('address', resp.content.decode())
+		self.assertInTemplateUsed(resp, 'mainpage.html')
+
