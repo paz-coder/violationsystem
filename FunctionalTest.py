@@ -1,16 +1,11 @@
-
-from django.test import LiveServerTestCase
+import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 from selenium.common.exceptions import WebDriverException
 
-MAX_WAIT = 3
-class PageTest(LiveServerTestCase):
-
-
-
-	def wait_for_table(self, row_text):        
+class PageTest(unittest.TestCase):
+ def wait_for_table(self, row_text):        
            start_time = time.time()
            while True:  
                try:                
