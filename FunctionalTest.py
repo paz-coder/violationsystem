@@ -2,7 +2,6 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
-from selenium.common.exceptions import WebDriverException
 
 class PageTest(unittest.TestCase):
 	def wait_for_table(self, row_text):        
