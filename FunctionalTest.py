@@ -50,29 +50,27 @@ class PageTest(unittest.TestCase):
 	time.sleep(1)
 	inputage.send_keys('22 yrs. old')
 	time.sleep(1)
-	 
-	
-    inputdswd = self.browser.find_element_by_id('dswd')
-    self.assertEqual(inputdswd.get_attribute('placeholder'),'ID Number')
-    inputdswd.click()
-    time.sleep(1)
-    inputdswd.send_keys('0000111')
-    time.sleep(1)
-	 
-	 
-    inputphone = self.browser.find_element_by_id('cellphone')
-    self.assertEqual(inputphone.get_attribute('placeholder'),'Cellphone Number')
-    inputphone.click()
-    time.sleep(1)
-    inputphone.send_keys('09095567845')
-    time.sleep(1)
 
-    inputday = self.browser.find_element_by_id('member')
-    self.assertEqual(inputday.get_attribute('placeholder'),'How many')
-    inputphone.click()
-    time.sleep(1)
-    inputphone.send_keys('3')
-    time.sleep(1)
-	 
-    btnContinue = self.browser.find_element_by_id('btnF')
-    btnContinue.cl
+	inputdswd = self.browser.find_element_by_id('dswd')
+	self.assertEqual(inputdswd.get_attribute('placeholder'),'ID Number')
+	inputdswd.click()
+	time.sleep(1)
+	inputdswd.send_keys('0000111')
+	time.sleep(1)
+
+	inputphone = self.browser.find_element_by_id('cellphone')
+	self.assertEqual(inputphone.get_attribute('placeholder'),'Cellphone Number')
+	inputphone.click()
+	time.sleep(1)
+	inputphone.send_keys('09095567845')
+	time.sleep(1)
+
+	inputday = self.browser.find_element_by_id('member')
+	self.assertEqual(inputday.get_attribute('placeholder'),'How many')
+	inputphone.click()
+	time.sleep(1)
+	inputphone.send_keys('3')
+	time.sleep(1)
+
+	btnContinue = self.browser.find_element_by_id('btnF')
+	btnContinue.cl
