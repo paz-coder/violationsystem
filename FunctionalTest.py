@@ -27,12 +27,12 @@ class PageTest(unittest.TestCase):
 		self.assertIn('4PS MONITORING SYSTEM', self.browser.title)
 		headerText = self.browser.find_element_by_tag_name('h1').text
 		self.assertIn('Member Form', headerText)
-		inpName = self.browser.find_element_by_id('applicantName')
-		btn_Pindot_button = self.browser.find_element_by_id('btnPindot')
+		inpname = self.browser.find_element_by_id('applicantName')
+		btn_Pindot_button = self.browser.find_element_by_id('btnf')
 
-		self.assertEqual(inpName.get_attribute('placeholder'),'Enter your Full Name.')
-		inpName.click()
-		inpName.send_keys('rayray')
+		self.assertEqual(inpname.get_attribute('placeholder'),'Enter your Full Name.')
+		inpname.click()
+		inpname.send_keys('rayray')
 		time.sleep(1)
 		btn_Pindot_button.click()
 		time.sleep(1)
