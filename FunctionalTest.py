@@ -19,25 +19,23 @@ class PageTest(unittest.TestCase):
                    time.sleep(0.5)  
 
                    def setUp(self):
-	 self.browser = webdriver.Firefox()
-
-	def test_browser_title(self):
-	 self.browser.get('http://localhost:8000/')
-	 #self.browser.get(self.live_server_url)
-	 self.assertIn('MEMBER FORM',self.browser.title)
-	 header_text = self.browser.find_element_by_tag_name('h1').text
-	 self.assertIn('MEMBER FORM', header_text)
+                   	self.browser = webdriver.Firefox()
+                   	def test_browser_title(self):
+                   		self.browser.get('http://localhost:8000/')
+                   		#self.browser.get(self.live_server_url)
+                   		self.assertIn('MEMBER FORM',self.browser.title)
+                   		header_text = self.browser.find_element_by_tag_name('h1').text
+                   		self.assertIn('MEMBER FORM', header_text)
 	 
 	 
 	 
 	
-	 inputmember = self.browser.find_element_by_id('member')
-	 self.assertEqual(inputmember.get_attribute('placeholder'),'Enter your Fullname')
-	 inputmember.click()
-	 time.sleep(1)
-	 inputmember.send_keys('Leonalyn Maglines')
-	 
-	 time.sleep(1)
+	inputmember = self.browser.find_element_by_id('member')
+	self.assertEqual(inputmember.get_attribute('placeholder'),'Enter your Fullname')
+	inputmember.click()
+	time.sleep(1)
+	inputmember.send_keys('Leonalyn Maglines')
+	time.sleep(1)
 	 
 	 
 	 inputaddress = self.browser.find_element_by_id('address')
@@ -79,6 +77,4 @@ class PageTest(unittest.TestCase):
 	 time.sleep(1)
 	 
 	 btnContinue = self.browser.find_element_by_id('btnF')
-	 btnContinue.click()
-	 time.sleep(2)
-	 
+	 btnContinue.cl
