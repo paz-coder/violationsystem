@@ -37,8 +37,7 @@ class PageTest(unittest.TestCase):
 	inputmember.send_keys('Leonalyn Maglines')
 	time.sleep(1)
 	 
-	 
-    inputaddress = self.browser.find_element_by_id('address')
+	inputaddress = self.browser.find_element_by_id('address')
     self.assertEqual(inputaddress.get_attribute('placeholder'),'Enter your Address')
     inputaddress.click()
     time.sleep(1)
