@@ -33,7 +33,9 @@ class PageTest(unittest.TestCase):
 		self.assertEqual(inpname.get_attribute('placeholder'),'Enter your Full Name.')
 		inpname.click()
 		inpname.send_keys('rayray')
-		
+		time.sleep(1)
+		btn_Pindot_button.click()
+		time.sleep(1)
 		
 		btn_add_button = self.browser.find_element_by_id('btna')
 		self.assertEqual(inputaddress.get_attribute('placeholder'),'Enter your Address.')
@@ -48,6 +50,11 @@ class PageTest(unittest.TestCase):
 		table = self.browser.find_element_by_id('registryTable')
 		rows = table.find_elements_by_tag_name('tr')
 		self.assertIn('rayray', [rows.text for rows in rows])
+
+	def checking_if_in_table_list(self,row_test):
+		table = self.browser.find_element_by_id('registryTable')
+		rows = table.find_elements_by_tag_name('tr')
+		self.assertIn('add', [rows.text for rows in rows])
 
 if __name__ == '__main__':
 	unittest.main(warnings='ignore')
