@@ -5,30 +5,249 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>4PS MONITORING SYSTEM</title>
 	</head>
+	<style>
+html {
+  height:100%;
+  background-image: white to right top, #8e44ad 0%, #3498db 100%;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+nav {
+  max-width: white;
+  margin: 0 auto;
+  padding:0px 0;
+}
+
+nav ul {
+  text-align: center;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  padding: 18px;
+  font-family: "Open Sans";
+  text-transform:uppercase;
+  color: rgba(0, 35, 122, 0.5);
+  font-size: 18px;
+  text-decoration: none;
+  display: block;
+}
+
+nav ul li a:hover {
+  box-shadow: 0 0 10px black, inset 0 0 1px orange ;
+  background: rgba(255, 255, 255, 0.1);
+  color: black;
+}
+ html{
+  background-color: wheat;
+}
+
+body{
+  background-color:white;
+  font-family: Rockwell, Georgia, serif;
+  max-width: 1000px;
+  width:90%;
+  margin: 0 auto;
+  box-shadow: 4px 4px 8px rgba(0,0,0.15)
+}
+h1{
+  background-color: tomato;
+  color: white;
+  text-align: center;
+  padding:6px;
+}
+.column{
+  width:50%;
+  float:left;
+  padding:2%;
+  box-sizing:border-box;
+}
+.column{
+  padding:3%;
+}
+/*clear-fix the parent of column because it collapsed!  */
+form:after{
+  content:'';
+  display:block;
+  clear:both;
+}
+
+/* FORM STUFF BEGINS HERE */
+form{
+  font-size:110%
+}
+label{
+  display:block;
+  color:saddlebrown;
+  margin:16px 0 3px;
+}
+fieldset label{
+  display:inline-block;
+  font-size:85%;
+  font-family: Calibri, sans-serif;
+}
+
+
+input[type=text],
+input[type=age],
+input[type=tel],
+textarea,
+select{
+  width:100%;
+  padding:5px;
+  box-sizing:border-box;
+  background-color:cornsilk;
+  border: solid 1px tan;
+  font-family:'Lucida Console', monospace;
+}
+textarea{
+  resize: vertical;
+  min-height: 70px;
+}
+fieldset{
+  border:none;
+  margin:20px 0 ;
+  padding:10px 0;
+  border-bottom: 1px solid tan;
+}
+legend{
+  color:white;
+  background-color:tan;
+  display:block;
+  width:100%;
+  padding:3px;
+}
+input[type=checkbox]{
+  background-color:red;
+  border: solid 1px red;
+  color:red;
+  outline:red;
+}
+/* BUTTONS */
+input[type=submit]{
+  background-color:forestgreen;
+  color:white;
+  border:none;
+  padding: 6px 20px;
+  font-size:110%;
+  border-radius:10px;
+  font-family: Rockwell, georgia, serif;
+}
+/* Reset Button: minimize the appearance */
+input[type=reset]{
+  background-color:transparent;
+  border:none;
+  text-decoration:underline;
+  cursor:pointer;
+  margin:20px 0;
+  color:olive;
+}
+
+/* hovers and tabs */
+input[type=text]:hover,
+input[type=email]:hover{
+  background-color:khaki;
+}
+input[type=text]:focus,
+input[type=email]:focus{
+  outline: 2px solid tan;
+}
+input[type=sumbit]:hover,
+input[type=submit]:focus{
+  background-color:limegreen;
+}
+/* responsive bonus round */
+@media screen and (min-width:450px){
+/*  2col  */
+  .column{
+    width:50%;
+    float:left;
+    padding:3%;
+    box-sizing:border-box;
+  }
+}
+.table, tr &th{
+  border: 5vh tomato;
+  border-collapse: collapse;
+  width: 100vh;
+}
+
+th {
+  background-color: lightgrey;
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+nav{
+ position: fixed;
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 75px;
+ background: #2980b9;
+ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+nav .navbar{
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ height: 100%;
+ max-width: 90%;
+ background: #2980b9;
+ margin: auto;
+}
+nav .navbar .logo a{
+  color: #fff;
+  font-size: 27px;
+  font-weight: 600;
+  text-decoration: none;
+}
+nav .navbar .menu{
+  display: flex;
+}
+.navbar .menu li{
+  list-style: none;
+  margin: 0 15px;
+}
+.navbar .menu li a{
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+</style>
 	<body>
 		<form method="POST">
 		{% csrf_token %}
 		<h1>Member Form</h1>
-		<label>Name:</label><input type="text" id="studentName" size="30" name="studentName" placeholder="Enter your name here.">
-		<label>Address:</label><input type="text" id="FstudentName" size="30" name="FstudentName" placeholder="Enter your name here.">
-		<label>Age:</label><input type="text" id="LstudentName" size="30" name="LstudentName" placeholder="Enter your name here.">
-		<label>DSWd:</label><input type="text" id="MstudentName" size="30" name="MstudentName" placeholder="Enter your name here.">
+		<label>Name:</label><input type="text" id="Name" size="30" name="Name" placeholder="Enter your name here.">
+		<label>Address:</label><input type="text" id="address" size="30" name="address" placeholder="Enter your address.">
+		<label>Age:</label><input type="text" id="age" size="30" name="age" placeholder="Enter your age.">
+		<label>DSWD ID No.:</label><input type="text" id="dswd" size="30" name="dswd" placeholder="Enter your dswd.">
+		<label>Member:</label><input type="text" id="member" size="30" name="member" placeholder="Enter your member">
 		<input id="btn"type="submit" name="btn" value="Submit"/>
 		</form>
-		<table id="scheduleTable">
+		<table id="Table">
 		
-			<!--<tr>
-				<th>Name<th/>
-				<th>Name2<th/>
-				<th>Name3<th/>
-			<tr/>  -->
-			
+		
 			
 			<tr>
-				<td>1. {{NameNew}}<td/>
-				<td>2. {{FNameNew}}<td/>
-				<td>3. {{LNameNew}}<td/>
-				<td>4. {{MNameNew}}<td/>
+				<td>Name: {{Name}}<td/>
+				<td>|Address: {{Address}}<td/>
+				<td>|Age: {{Age}}<td/>
+				<td>|Dswd: {{Dswd}}<td/>
+				<td>|Member: {{Member}}<td/>
 			</tr>
 				
 		</table>		
