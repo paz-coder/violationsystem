@@ -30,7 +30,7 @@ def test_start_list_and_retrieve_it(self):
 		btn_button.click()
 		time.sleep(1)
 
-	def checking_if_in_table_list(self,row_test):
+		def checking_if_in_table_list(self,row_test):
 		table = self.browser.find_element_by_id('Table')
 		rows = table.find_elements_by_tag_name('tr')
 		self.assertIn('Ray', [rows.text for rows in rows])
