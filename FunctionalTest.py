@@ -16,7 +16,7 @@ def test_start_list_and_retrieve_it(self):
 		inputadd = self.browser.find_element_by_id('Address1')
 		inputage = self.browser.find_element_by_id('Age1')
 		inputdswd = self.browser.find_element_by_id('Dswd1')
-		btn_button = self.browser.find_element_by_id('btn')
+		btn_button = self.browser.find_element_by_id('btnf')
 		self.assertEqual(inpName.get_attribute('placeholder'),'Enter your name here.')
 		inpName.click()
 		inpName.send_keys('Ray')
