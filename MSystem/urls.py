@@ -18,5 +18,7 @@ from django.urls import path
 from msystem import views
 
 urlpatterns = [
-    path('', views.MainPage, name='mainpage'),
+path('admin/', admin.site.urls),
+path('', views.MainPage, name='mainpage'),
 ]
+
