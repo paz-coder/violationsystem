@@ -1,6 +1,6 @@
 from django.urls import resolve
 from django.test import TestCase
-from plklsys.views import MainPage
+from msystem.views import MainPage
 from django.http import HttpRequest
 from django.template.loader import render_to_string
 from django.urls import resolve
