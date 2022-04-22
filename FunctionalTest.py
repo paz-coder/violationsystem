@@ -7,33 +7,33 @@ class PageTest(unittest.TestCase):
 	def setUp(self):
 		self.browser = webdriver.Firefox()
 		
-def test_start_list_and_retrieve_it(self):
+	def test_start_list_and_retrieve_it(self):
 		self.browser.get('http://localhost:8000')
-		self.assertIn('4PS MONITORING SYSTEM', self.browser.title)
+		self.assertIn('PT Schedule', self.browser.title)
 		headerText = self.browser.find_element_by_tag_name('h1').text
-		self.assertIn('Member Form', headerText)
-		inputname = self.browser.find_element_by_id('Name')
-		inputadd = self.browser.find_element_by_id('Address1')
-		inputage = self.browser.find_element_by_id('Age1')
-		inputdswd = self.browser.find_element_by_id('Dswd1')
-		btn_button = self.browser.find_element_by_id('btnf')
-		self.assertEqual(inputname.get_attribute('placeholder'),'Enter your name here.')
-		inputname.click()
-		inputname.send_keys('Ray')
+		self.assertIn('Schedule Form', headerText)
+		inpName = self.browser.find_element_by_id('studentName')
+		inpNameF = self.browser.find_element_by_id('FstudentName')
+		inpNameL = self.browser.find_element_by_id('LstudentName')
+		inpNameM = self.browser.find_element_by_id('MstudentName')
+		btn_button = self.browser.find_element_by_id('btn')
+		self.assertEqual(inpName.get_attribute('placeholder'),'Enter your name here.')
+		inpName.click()
+		inpName.send_keys('Scathach')
 		time.sleep(1)
-		inputadd.send_keys('brgy')
+		inpNameF.send_keys('Skadi')
 		time.sleep(1)
-		inputage.send_keys('22')
+		inpNameL.send_keys('Morgan')
 		time.sleep(1)
-		inputdswd.send_keys('0110')
+		inpNameM.send_keys('Eresh')
 		time.sleep(1)
 		btn_button.click()
 		time.sleep(1)
 
-def checking_if_in_table_list(self,row_test):
-		table = self.browser.find_element_by_id('Table')
+	def checking_if_in_table_list(self,row_test):
+		table = self.browser.find_element_by_id('scheduleTable')
 		rows = table.find_elements_by_tag_name('tr')
-		Sself.assertIn('Ray', [rows.text for rows in rows])
+		self.assertIn('1: Scathach', [rows.text for rows in rows])
 
 if __name__ == '__main__':
-		unittest.main(warnings='ignore')
+	unittest.main(warnings='ignore')

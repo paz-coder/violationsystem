@@ -3,27 +3,32 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>4PS MONITORING SYSTEM</title>
+		<title>PT Schedule</title>
 	</head>
 	<body>
 		<form method="POST">
 		{% csrf_token %}
-		<h1>Member Form</h1>
-		<label>Name:</label><input type="text" id="Name" size="30" name="Name" placeholder="Enter your name here.">
-		<label>Address:</label><input type="text" id="address" size="30" name="address" placeholder="Enter your address.">
-		<label>Age:</label><input type="text" id="age" size="30" name="age" placeholder="Enter your age.">
-		<label>Dswd:</label><input type="text" id="dswd" size="30" name="dswd" placeholder="Enter your ID No.">
-		<input id="btnf"type="continue" name="btnf" value="continue"/>
+		<h1>Schedule Form</h1>
+		<label>Name:</label><input type="text" id="studentName" size="30" name="studentName" placeholder="Enter your name here.">
+		<label>FName:</label><input type="text" id="FstudentName" size="30" name="FstudentName" placeholder="Enter your name here.">
+		<label>LName:</label><input type="text" id="LstudentName" size="30" name="LstudentName" placeholder="Enter your name here.">
+		<label>LName:</label><input type="text" id="MstudentName" size="30" name="MstudentName" placeholder="Enter your name here.">
+		<input id="btn"type="submit" name="btn" value="Submit"/>
 		</form>
-		<table id="Table">
+		<table id="scheduleTable">
 		
+			<!--<tr>
+				<th>Name<th/>
+				<th>Name2<th/>
+				<th>Name3<th/>
+			<tr/>  -->
 			
 			
 			<tr>
-				<td>1. {{Name}}<td/>
-				<td>2. {{address}}<td/>
-				<td>3. {{age}}<td/>
-				<td>4. {{dswd}}<td/>
+				<td>1. {{NameNew}}<td/>
+				<td>2. {{FNameNew}}<td/>
+				<td>3. {{LNameNew}}<td/>
+				<td>4. {{MNameNew}}<td/>
 			</tr>
 				
 		</table>		
