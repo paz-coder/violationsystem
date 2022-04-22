@@ -35,5 +35,5 @@ def test_start_list_and_retrieve_it(self):
 			rows = table.find_elements_by_tag_name('tr')
 			self.assertIn('Ray', [rows.text for rows in rows])
 
-			if __name__ == '__main__':
-				unittest.main(warnings='ignore')
+if __name__ == '__main__':
+		unittest.main(warnings='ignore')
