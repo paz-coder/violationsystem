@@ -12,7 +12,7 @@ class PageTest(unittest.TestCase):
 		self.assertIn('4PS MONITORING SYSTEM', self.browser.title)
 		headerText = self.browser.find_element_by_tag_name('h1').text
 		self.assertIn('Member Form', headerText)
-		inpName = self.browser.find_element_by_id('Name')
+		inputName = self.browser.find_element_by_id('Name')
 		btn_Pindot_button = self.browser.find_element_by_id('btnf')
 		self.assertEqual(inputName.get_attribute('placeholder'),'Enter your name here.')
 		inputName.click()
