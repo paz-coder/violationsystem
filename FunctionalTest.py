@@ -13,12 +13,12 @@ class PageTest(unittest.TestCase):
 		headerText = self.browser.find_element_by_tag_name('h1').text
 		self.assertIn('Member Form', headerText)
 		inputName = self.browser.find_element_by_id('Name')
-		btn_Pindot_button = self.browser.find_element_by_id('btnf')
+		btn_touch = self.browser.find_element_by_id('btnf')
 		self.assertEqual(inputName.get_attribute('placeholder'),'Enter your Full Name.')
 		inputName.click()
 		inputName.send_keys('Rayray')
 		time.sleep(1)
-		btn_Pindot_button.click()
+		btn_touch.click()
 		time.sleep(1)
 		 
 
