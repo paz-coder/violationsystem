@@ -235,21 +235,17 @@ nav .navbar .menu{
 		<label>Address:</label><input type="text" id="address" size="30" name="address" placeholder="Enter your address.">
 		<label>Age:</label><input type="text" id="age" size="30" name="age" placeholder="Enter your age.">
 		<label>DSWD ID No.:</label><input type="text" id="dswd" size="30" name="dswd" placeholder="Enter your dswd.">
-		<label>Member:</label><input type="text" id="member" size="30" name="member" placeholder="Enter your member">
 		<input id="btn"type="submit" name="btn" value="Submit"/>
+		<table id="Table" name='tr'>
+        {% for item in items %}
+        <tr><td>{{ forloop.counter }}: {{ item.Name }}</td>
+        <td>{{item.Address}}</td>
+				<td>{{item.Age}}</td>
+				<td>{{item.Dswd}}</td></tr>
+        {% endfor %} 
+    </table>
+
 		</form>
-		<table id="Table">
 		
-		
-			
-			<tr>
-				<td>Name: {{Name}}<td/>
-				<td>|Address: {{Address}}<td/>
-				<td>|Age: {{Age}}<td/>
-				<td>|Dswd: {{Dswd}}<td/>
-				<td>|Member: {{Member}}<td/>
-			</tr>
-				
-		</table>		
 	</body>	
 </html>
