@@ -30,7 +30,7 @@ def new_list(request):
    Member.objects.create(Name=request.POST['Name'], Address=request.POST['address'], Age=request.POST['age'], Dswd=request.POST['dswd'],list=list_)
    return redirect(f'/msystem/{list_.id}/')'''
 
- '''  
+'''  
 def add_item(request, list_id):    
    list_ = List.objects.get(id=list_id)    
    Item.objects.create(Name=request.POST['Name'], Address=request.POST['address'], Age=request.POST['age'], Dswd=request.POST['dswd'],list=list_)
