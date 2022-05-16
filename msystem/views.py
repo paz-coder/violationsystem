@@ -1,6 +1,6 @@
-#from django.http import HttpResponse    
+from django.http import HttpResponse    
 from django.shortcuts import redirect, render
-from msystem.models import Item, List
+from msystem.models import Member
 
 
 #def MainPage(request):
@@ -8,9 +8,18 @@ from msystem.models import Item, List
 
 
 def MainPage(request): 
-   return render(request, 'mainpage.html') 
-  
+ 
+ if request.method == 'POST':
+        Member.objects.create(Name=request.POST['Name'], 
+            Address= request.POST['address'],
+            Age= request.POST['age'],
+            Dswd= request.POST['dswd'],)
+        return redirect('/')
+    mlist = Member.objects.all()
+    return render(request, 'mainpage.html',{'items':mlist})
 
+  
+'''
 
 def view_list(request, list_id):    
    list_ = List.objects.get(id=list_id)
@@ -19,7 +28,7 @@ def view_list(request, list_id):
 def new_list(request):    
    list_ = List.objects.create()
    Member.objects.create(Name=request.POST['Name'], Address=request.POST['address'], Age=request.POST['age'], Dswd=request.POST['dswd'],list=list_)
-   return redirect(f'/msystem/{list_.id}/')
+   return redirect(f'/msystem/{list_.id}/')'''
 
  '''  
 def add_item(request, list_id):    
@@ -27,15 +36,6 @@ def add_item(request, list_id):
    Item.objects.create(Name=request.POST['Name'], Address=request.POST['address'], Age=request.POST['age'], Dswd=request.POST['dswd'],list=list_)
    return redirect(f'/msystem/{list_.id}/') '''
 
-  '''  if request.method == 'POST':
-        Member.objects.create(Name=request.POST['Name'], 
-            Address= request.POST['address'],
-            Age= request.POST['age'],
-            Dswd= request.POST['dswd'],)
-        return redirect('/')
-    reglist = Member.objects.all()
-    return render(request, 'mainpage.html',{'registered':reglist})
-'''
 
 
 '''def MainPage(request): 
