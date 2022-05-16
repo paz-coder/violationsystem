@@ -57,9 +57,9 @@ class PageTest(LiveServerTestCase):
 		headerText = self.browser.find_element_by_tag_name('h1').text
 		self.assertIn('Member Form', headerText)
 		Name = self.browser.find_element_by_id('Name')
-		Snum = self.browser.find_element_by_id('address')
-		Section = self.browser.find_element_by_id('age')
-		Violation = self.browser.find_element_by_id('dswd')
+		Add = self.browser.find_element_by_id('address')
+		Ag = self.browser.find_element_by_id('age')
+		Ds = self.browser.find_element_by_id('dswd')
 		btn_button = self.browser.find_element_by_id('btn')
 		self.assertEqual(Name.get_attribute('placeholder'),'Enter your name here.')
 		Name.click()

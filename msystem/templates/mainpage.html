@@ -11,7 +11,7 @@
 </style>
 	<body>
 		<form method="POST">
-		{% csrf_token %}
+		
 		<h1>Member Form</h1>
 		<label>Name:</label><input type="text" id="Name" size="30" name="Name" placeholder="Enter your name here.">
 		<label>Address:</label><input type="text" id="address" size="30" name="address" placeholder="Enter your address.">
@@ -19,6 +19,7 @@
 		<label>DSWD ID No.:</label><input type="text" id="dswd" size="30" name="dswd" placeholder="Enter your dswd.">
 		<input id="btn"type="submit" name="btn" value="Submit"/>
 		
+		{% csrf_token %}
 		<table id="member" name='tr'>
         {% for item in items %}
         <tr><td>{{ forloop.counter }}: {{ item.Name }}</td>
