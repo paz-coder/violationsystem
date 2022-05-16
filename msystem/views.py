@@ -18,16 +18,28 @@ def view_list(request, list_id):
    
 def new_list(request):    
    list_ = List.objects.create()
-   Item.objects.create(Name=request.POST['Name'], Address=request.POST['address'], Age=request.POST['age'], Dswd=request.POST['dswd'],list=list_)
+   Member.objects.create(Name=request.POST['Name'], Address=request.POST['address'], Age=request.POST['age'], Dswd=request.POST['dswd'],list=list_)
    return redirect(f'/msystem/{list_.id}/')
 
-   
+ '''  
 def add_item(request, list_id):    
    list_ = List.objects.get(id=list_id)    
    Item.objects.create(Name=request.POST['Name'], Address=request.POST['address'], Age=request.POST['age'], Dswd=request.POST['dswd'],list=list_)
-   return redirect(f'/msystem/{list_.id}/')
+   return redirect(f'/msystem/{list_.id}/') '''
+
+  '''  if request.method == 'POST':
+        Member.objects.create(Name=request.POST['Name'], 
+            Address= request.POST['address'],
+            Age= request.POST['age'],
+            Dswd= request.POST['dswd'],)
+        return redirect('/')
+    reglist = Member.objects.all()
+    return render(request, 'mainpage.html',{'registered':reglist})
+'''
+
+
 '''def MainPage(request): 
-   return render(request, 'mainpage.html') 
+   return render(request, 'mainpage.html') 	
   
 
 
