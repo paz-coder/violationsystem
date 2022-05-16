@@ -16,7 +16,7 @@ def MainPage(request):
             Dswd= request.POST['dswd'],)
         return redirect('/')
         reglist = Member.objects.all()
-    return render(request, 'mainpage.html',{'items':reglist})
+        return render(request, 'mainpage.html',{'items':reglist})
 
   
 '''
