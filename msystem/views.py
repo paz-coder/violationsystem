@@ -15,8 +15,8 @@ def MainPage(request):
             Age= request.POST['age'],
             Dswd= request.POST['dswd'],)
         return redirect('/')
-    mlist = Member.objects.all()
-    return render(request, 'mainpage.html',{'items':mlist})
+    reglist = Member.objects.all()
+    return render(request, 'mainpage.html',{'items':reglist})
 
   
 '''

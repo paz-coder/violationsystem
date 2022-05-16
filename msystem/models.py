@@ -39,5 +39,3 @@ class Item(models.Model):
 
 
 
-
-    list = models.ForeignKey(List, default=None, on_delete=models.PROTECT)
