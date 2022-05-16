@@ -52,8 +52,8 @@ class ORMTest(TestCase):
 
  		items = Member.objects.all()
  		self.assertEqual(items.count(), 2)
- 		items1 = items[0]
- 		items2 = items[1]
+ 		items1 = items[0
+] 		items2 = items[1]
 
 
  		self.assertEqual(items2.Name , 'juan j')
