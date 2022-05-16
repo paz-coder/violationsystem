@@ -1,5 +1,6 @@
 from django.test import TestCase
-from msystem.views import MainPage
+from MSystem.views import MainPage
+from MSystem.models import Member
 
 
 

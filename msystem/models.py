@@ -1,8 +1,6 @@
 from django.db import models
 
     
-class List(models.Model):
-    pass
 
 class Member(models.Model):    
     Name = models.TextField(default='')

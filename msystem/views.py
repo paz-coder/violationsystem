@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from msystem.models import Member
 
 
+
 #def MainPage(request):
 	#return render(request, 'mainpage.html', {'Name': request.POST.get('Name'), 'Address': request.POST.get('address'), 'Age': request.POST.get('age'), 'Dswd': request.POST.get('dswd')})
 
