@@ -1,1 +1,1 @@
-Repository for project
+This repository is for svsystem project

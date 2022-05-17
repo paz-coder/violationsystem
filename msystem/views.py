@@ -4,11 +4,13 @@ from msystem.models import Member
 
 
 
-#def MainPage(request):
-	#return render(request, 'mainpage.html', {'Name': request.POST.get('Name'), 'Address': request.POST.get('address'), 'Age': request.POST.get('age'), 'Dswd': request.POST.get('dswd')})
+def MainPage(request):
+	if request.method == 'POST':
+		return render(request, 'mainpage.html', {'Name': request.POST.get('Name'), 'Address': request.POST.get('address'), 'Age': request.POST.get('age'), 'Dswd': request.POST.get('dswd')})
+		return render(request, 'mainpage.html', {'registered': list_})
+		list_ = Member.objects.all()
 
-
-def MainPage(request): 
+'''def MainPage(request): 
  
  if request.method == 'POST':
         Member.objects.create(Name=request.POST['Name'], 
@@ -17,7 +19,7 @@ def MainPage(request):
             Dswd= request.POST['dswd'],)
         return redirect('/')
         reglist = Member.objects.all()
-        return render(request, 'mainpage.html',{'items':reglist})
+        return render(request, 'mainpage.html',{'registered':reglist})'''
 
   
 '''

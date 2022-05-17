@@ -20,13 +20,15 @@
 		<input id="btn"type="submit" name="btn" value="Submit"/>
 		
 		{% csrf_token %}
-		<table id="member" name='tr'>
-        {% for item in items %}
-        <tr><td>{{ forloop.counter }}: {{ item.Name }}</td>
-        <td>{{item.Address}}</td>
-				<td>{{item.Age}}</td>
-				<td>{{item.Dswd}}</td></tr>
-        {% endfor %} 
+
+        </form>
+        <table id="member">
+        {% for item in registered %}
+        <tr>
+            <td> {{forloop.counter}}: {{item.Name}} {{item.Address}} {{item.Age}} {{item.Dswd}} </td>
+            
+        </tr>
+        {% endfor %}
     </table>
 
 		</form>
