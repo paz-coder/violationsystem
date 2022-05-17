@@ -1,5 +1,5 @@
 """
-ASGI config for MSystem project.
+ASGI config for svsystem project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MSystem.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'svsystem.settings')
 
 application = get_asgi_application()
