@@ -1,1 +1,1 @@
-This repository is for svsystem project
+This repository is for web application
