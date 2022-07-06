@@ -88,27 +88,7 @@
       transition: all 0.15s linear;
       cursor: pointer;
     }
-    .menu ul li.icon-dashboard {
-      background-image: url("http://www.entypo.com/images//gauge.svg");
-    }
-    .menu ul li.icon-customers {
-      background-image: url("http://www.entypo.com/images//briefcase.svg");
-    }
-    .menu ul li.icon-users {
-      background-image: url("http://www.entypo.com/images//users.svg");
-    }
-    .menu ul li.icon-calendar {
-      background-image: url("http://www.entypo.com/images//calendar.svg");
-    }
-
-    .menu ul li:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-    .menu ul li:focus {
-      outline: none;
-    }
    
-    }
 
   </style>
 </head>
@@ -122,10 +102,11 @@
       <br><br>
       <h6>Student</h6>
       <h2>{{request.user.first_name}}</h2>
+      <a  style="color:black;" href="/logout" class="nav-item nav-link">Logout</a>
     </header>
     <ul>
-      <li tabindex="0" class="icon-dashboard"> <a style="color:white; text-decoration:none;" href="/student-dashboard"><span>Dashboard</span></a> </li>
-      <li tabindex="0" class="icon-calendar"> <a style="color:white; text-decoration:none;" href="/student-appointment"><span>Appointments</span></a></li>
+      <li tabindex="0" > <a style="color:white; text-decoration:none;" href="/student-dashboard"><span>Dashboard</span></a> </li>
+      <li tabindex="0" > <a style="color:white; text-decoration:none;" href="/student-appointment"><span>Appointments</span></a></li>
      
     </ul>
   </nav>
@@ -135,7 +116,6 @@
       <nav class="navbar navbar-expand-md  navbar-dark fixed-top" style="background:#000000;">
         <a href="/student-dashboard" class="navbar-brand">STUDENT VIOLATION SYSTEM</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
           <div class="navbar-nav" style=" margin-left: 90%;">

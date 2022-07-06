@@ -1,12 +1,12 @@
-{% extends 'mypage/admin_base.html' %}
+{% extends 'mypage/index_inside.html' %}
 {% load static %}
 {% block content %}
-{%include 'mypage/admin_dashboard_cards.html'%}
+
 <br><br><br><br>
 <div class="container">
   <div class="row">
     <div class="panel panel-primary col-md-5" style="margin-left:2%;">
-      <div class="panel-heading" style="text-align:center;background: black;">
+      <div class="panel-heading" style="text-align:center;background: aliceblue;">
         <h6 class="panel-title">List of Teachers</h6>
       </div>
       <table class="table table-hover" id="dev-table">
@@ -25,7 +25,7 @@
           <td>{{d.department}}</td>
 
           {%if d.status%}
-          <td> <span class="label label-primary">On List</span></td>
+          <td> <span class="label label-primary">Active</span></td>
           {% else %}
           <td> <span class="label label-success">On Hold</span></td>
           {% endif %}
@@ -36,7 +36,7 @@
     </div>
 
     <div class="panel panel-primary col-md-5" style="margin-left:5%;">
-      <div class="panel-heading" style="text-align:center; background: black;">
+      <div class="panel-heading" style="text-align:center; background: aliceblue;">
         <h6 class="panel-title">List of Student</h6>
       </div>
       <table class="table table-hover" id="dev-table">
@@ -55,7 +55,7 @@
           <td>{{p.course}}</td>
           <td>{{p.year}}</td>
           {%if p.status%}
-          <td> <span class="label label-primary">Onlist</span></td>
+          <td> <span class="label label-primary">Under Service</span></td>
           {% else %}
           <td> <span class="label label-success">On Hold</span></td>
           {% endif %}

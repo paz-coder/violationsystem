@@ -51,6 +51,52 @@ def admin_signup_view(request):
 
 
 
+
+def teacher_signup_view(request):
+    userForm=forms.TeacherUserForm()
+    teacherForm=forms.TeacherForm()
+    mydict={'userForm':userForm,'teacherForm':teacherForm}
+    if request.method=='POST':
+        userForm=forms.TeacherUserForm(request.POST)
+        teacherForm=forms.TeacherForm(request.POST,request.FILES)
+        if userForm.is_valid() and teacherForm.is_valid():
+            user=userForm.save()
+            user.set_password(user.password)
+            user.save()
+            teacher=teacherForm.save(commit=False)
+            teacher.user=user
+            teacher=teacher.save()
+            my_teacher_group = Group.objects.get_or_create(name='TEACHER')
+            my_teacher_group[0].user_set.add(user)
+        return HttpResponseRedirect('teacherlogin')
+    return render(request,'mypage/teachersignup.html',context=mydict)
+
+
+def student_signup_view(request):
+    userForm=forms.StudentUserForm()
+    studentForm=forms.StudentForm()
+    mydict={'userForm':userForm,'studentForm':studentForm}
+    if request.method=='POST':
+        userForm=forms.StudentUserForm(request.POST)
+        studentForm=forms.StudentForm(request.POST,request.FILES)
+        if userForm.is_valid() and studentForm.is_valid():
+            user=userForm.save()
+            user.set_password(user.password)
+            user.save()
+            student=studentForm.save(commit=False)
+            student.user=user
+            student.assignedTeacherId=request.POST.get('assignedTeacherId')
+            student=student.save()
+            my_student_group = Group.objects.get_or_create(name='STUDENT')
+            my_student_group[0].user_set.add(user)
+        return HttpResponseRedirect('studentlogin')
+    return render(request,'mypage/studentsignup.html',context=mydict)
+
+
+
+
+
+
 def is_admin(user):
     return user.groups.filter(name='ADMIN').exists()
 def is_teacher(user):
@@ -74,6 +120,10 @@ def afterlogin_view(request):
             return redirect('student-dashboard')
         else:
             return render(request,'mypage/student_wait_for_approval.html')
+
+
+
+
 
 
 
@@ -360,6 +410,202 @@ def reject_appointment_view(request,pk):
     appointment=models.Appointment.objects.get(id=pk)
     appointment.delete()
     return redirect('admin-approve-appointment')
+#---------------------------------------------------------------------------------
+#------------------------ ADMIN RELATED VIEWS END ------------------------------
+#---------------------------------------------------------------------------------
+
+
+
+
+
+
+
+#---------------------------------------------------------------------------------
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_teacher)
+def teacher_dashboard_view(request):
+    #for three cards
+    studentcount=models.Student.objects.all().filter(status=True,assignedTeacherId=request.user.id).count()
+    appointmentcount=models.Appointment.objects.all().filter(status=True,teacherId=request.user.id).count()
+    
+    appointments=models.Appointment.objects.all().filter(status=True,teacherId=request.user.id).order_by('-id')
+    studentid=[]
+    for a in appointments:
+        studentid.append(a.studentId)
+    students=models.Student.objects.all().filter(status=True,user_id__in=studentid).order_by('-id')
+    appointments=zip(appointments,students)
+    mydict={
+    'studentcount':studentcount,
+    'appointmentcount':appointmentcount,
+    'appointments':appointments,
+    'teacher':models.Teacher.objects.get(user_id=request.user.id), 
+    }
+    return render(request,'mypage/teacher_dashboard.html',context=mydict)
+
+
+
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_teacher)
+def teacher_student_view(request):
+    mydict={
+    'teacher':models.Teacher.objects.get(user_id=request.user.id), 
+    }
+    return render(request,'mypage/teacher_student.html',context=mydict)
+
+
+
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_teacher)
+def teacher_view_student_view(request):
+    students=models.Student.objects.all().filter(status=True,assignedTeacherId=request.user.id)
+    teacher=models.Teacher.objects.get(user_id=request.user.id) 
+    return render(request,'mypage/teacher_view_student.html',{'students':students,'teacher':teacher})
+
+
+
+
+
+
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_teacher)
+def teacher_appointment_view(request):
+    teacher=models.Teacher.objects.get(user_id=request.user.id) 
+    return render(request,'mypage/teacher_appointment.html',{'teacher':teacher})
+
+
+
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_teacher)
+def teacher_view_appointment_view(request):
+    teacher=models.Teacher.objects.get(user_id=request.user.id) 
+    appointments=models.Appointment.objects.all().filter(status=True,teacherId=request.user.id)
+    studentid=[]
+    for a in appointments:
+        studentid.append(a.studentId)
+    students=models.Student.objects.all().filter(status=True,user_id__in=studentid)
+    appointments=zip(appointments,students)
+    return render(request,'mypage/teacher_view_appointment.html',{'appointments':appointments,'teacher':teacher})
+
+
+
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_teacher)
+def teacher_delete_appointment_view(request):
+    teacher=models.Teacher.objects.get(user_id=request.user.id) 
+    appointments=models.Appointment.objects.all().filter(status=True,teacherId=request.user.id)
+    studentid=[]
+    for a in appointments:
+        studentid.append(a.studentId)
+    students=models.Student.objects.all().filter(status=True,user_id__in=studentid)
+    appointments=zip(appointments,students)
+    return render(request,'mypage/teacher_delete_appointment.html',{'appointments':appointments,'teacher':teacher})
+
+
+
+@login_required(login_url='teacherlogin')
+@user_passes_test(is_teacher)
+def delete_appointment_view(request,pk):
+    appointment=models.Appointment.objects.get(id=pk)
+    appointment.delete()
+    teacher=models.Teacher.objects.get(user_id=request.user.id) 
+    appointments=models.Appointment.objects.all().filter(status=True,teacherId=request.user.id)
+    studentid=[]
+    for a in appointments:
+        studentid.append(a.studentId)
+    students=models.Student.objects.all().filter(status=True,user_id__in=studentid)
+    appointments=zip(appointments,students)
+    return render(request,'mypage/teacher_delete_appointment.html',{'appointments':appointments,'teacher':teacher})
+
+
+
+#---------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------
+
+
+
+
+
+
+#---------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------
+@login_required(login_url='studentlogin')
+@user_passes_test(is_student)
+def student_dashboard_view(request):
+    student=models.Student.objects.get(user_id=request.user.id)
+    teacher=models.Teacher.objects.get(user_id=student.assignedTeacherId)
+    mydict={
+    'student':student,
+    'teacherName':teacher.get_name,
+    'teacherPosition':teacher.position,
+    'violation':student.violation,
+    'scheduleday':student.scheduleday,
+    'hoursperday':student.hoursperday,
+    'teacherDepartment':teacher.department,
+    'admitDate':student.admitDate,
+    }
+    return render(request,'mypage/student_dashboard.html',context=mydict)
+
+
+
+@login_required(login_url='studentlogin')
+@user_passes_test(is_student)
+def student_appointment_view(request):
+    student=models.Student.objects.get(user_id=request.user.id) 
+    return render(request,'mypage/student_appointment.html',{'student':student})
+
+
+
+@login_required(login_url='studentlogin')
+@user_passes_test(is_student)
+def student_book_appointment_view(request):
+    appointmentForm=forms.StudentAppointmentForm()
+    student=models.Student.objects.get(user_id=request.user.id) 
+    message=None
+    mydict={'appointmentForm':appointmentForm,'student':student,'message':message}
+    if request.method=='POST':
+        appointmentForm=forms.StudentAppointmentForm(request.POST)
+        if appointmentForm.is_valid():
+            print(request.POST.get('teacherId'))
+            desc=request.POST.get('description')
+
+            teacher=models.Teacher.objects.get(user_id=request.POST.get('teacherId'))
+            
+            if teacher.department == 'ICT':
+                if 'Ict' in desc:
+                    pass
+                else:
+                    print('else')
+                    message="Please Choose Teacher"
+                    return render(request,'mypage/student_book_appointment.html',{'appointmentForm':appointmentForm,'student':student,'message':message})
+
+
+
+
+            appointment=appointmentForm.save(commit=False)
+            appointment.teacherId=request.POST.get('teacherId')
+            appointment.studentId=request.user.id 
+            appointment.teacherName=models.User.objects.get(id=request.POST.get('teacherId')).first_name
+            appointment.studentName=request.user.first_name 
+            appointment.status=False
+            appointment.save()
+        return HttpResponseRedirect('student-view-appointment')
+    return render(request,'mypage/student_book_appointment.html',context=mydict)
+
+
+
+
+
+@login_required(login_url='studentlogin')
+@user_passes_test(is_student)
+def student_view_appointment_view(request):
+    student=models.Student.objects.get(user_id=request.user.id) 
+    appointments=models.Appointment.objects.all().filter(studentId=request.user.id)
+    return render(request,'mypage/student_view_appointment.html',{'appointments':appointments,'student':student})
+
+
+
 
 
 

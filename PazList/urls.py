@@ -20,10 +20,12 @@ urlpatterns = [
     path('studentclick', views.studentclick_view),
 
     path('adminsignup', views.admin_signup_view),
- 
+    path('teachersignup', views.teacher_signup_view,name='teachersignup'),
+    path('studentsignup', views.student_signup_view),
+    
     path('adminlogin', LoginView.as_view(template_name='mypage/adminlogin.html')),
     path('teacherlogin', LoginView.as_view(template_name='mypage/teacherlogin.html')),
-
+    path('studentlogin', LoginView.as_view(template_name='mypage/studentlogin.html')),
 
 
     path('afterlogin', views.afterlogin_view,name='afterlogin'),
@@ -57,5 +59,27 @@ urlpatterns = [
 
 
 
+urlpatterns +=[
+    path('teacher-dashboard', views.teacher_dashboard_view,name='teacher-dashboard'),
 
+    path('teacher-student', views.teacher_student_view,name='teacher-student'),
+    path('teacher-view-student', views.teacher_view_student_view,name='teacher-view-student'),
+    path('teacher-appointment', views.teacher_appointment_view,name='teacher-appointment'),
+    path('teacher-view-appointment', views.teacher_view_appointment_view,name='teacher-view-appointment'),
+    path('teacher-delete-appointment',views.teacher_delete_appointment_view,name='teacher-delete-appointment'),
+    path('delete-appointment/<int:pk>', views.delete_appointment_view,name='delete-appointment'),
+]
+
+
+
+
+urlpatterns +=[
+
+    path('student-dashboard', views.student_dashboard_view,name='student-dashboard'),
+    path('student-appointment', views.student_appointment_view,name='student-appointment'),
+    path('student-book-appointment', views.student_book_appointment_view,name='student-book-appointment'),
+    path('student-view-appointment', views.student_view_appointment_view,name='student-view-appointment'),
+   
+
+]
 
