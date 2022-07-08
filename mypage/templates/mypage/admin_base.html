@@ -1,139 +1,187 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>SVS</title>
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-  <link rel="stylesheet" href="{% static '/style.css' %}">
-
-
-  <style media="screen">
-    a:link {
-      text-decoration: none;
-    }
-
-    a {
-      color: white;
-    }
-
-    a:hover {
-      color: white;
-    }
-
-    body {
-
-      padding-left: 250px;
-    }
-    main {
-      position: relative;
-      height: 100vh;
-    }
-
-    .menu {
-      background:dimgrey;
-      height: calc(100vh);
-      width: 240px;
-      position: fixed;
-      top: 0px;
-      left: 0;
-      z-index: 5;
-      outline: black;
-    }
-    .menu .avatar {
-      background: rgba(0, 0, 0, 0.1);
-      padding: 2em 0.5em;
-      text-align: center;
-    }
-    .menu .avatar h6 {
-      font-weight: bold;
-      font-size: 50px;
-      margin-bottom: 0;
-      color:floralwhite;
-    }
-    .menu .avatar h2 {
-      font-weight: normal;
-      margin-bottom: 0;
-      color:cornflowerblue;
-    }
-    .menu ul {
-      list-style: none;
-      padding: 0.5em 0;
-      margin: 0;
-    }
-    .menu ul li {
-      padding: 0.5em 1em 0.5em 3em;
-      font-size: 0.95em;
-      font-weight: regular;
-      background-repeat: no-repeat;
-      background-position: left 15px center;
-      background-size: auto 20px;
-      transition: all 0.15s linear;
-      cursor: pointer;
-    }
-    .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+<html>
+ <head>
+   <title>Student Violation System</title>
+       <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+<style> 
+* {
+  margin:0;
+  padding:0;
+}
+body {
+  background-color:#grey;
+  font-family: 'Raleway', sans-serif;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+#container {
+  position:relative;
+  width:100%;
+  margin:0% auto;
+  background-color:black;
+  box-shadow: -2px -2px 5px white,2px -2px 5px white;
+}
+#container > nav {
+  width:100%;
+  display:flex;
+  max-height:60px;
+}
+#logo {
+  line-height:60px;
+  font-size:30px;
+  padding: 0 50px;
+  color: white;
+  width:40%;
+  letter-spacing:2px;
+  text-shadow:2px 2px 5px;
+}
+#container > nav > ul {
+  margin:0;
+  paddding:0;
+  list-style-type:none;
+  display:flex;
+  position:absolute;
+    right:50px;
+/*   min-width:60%; */
+}
+#container > nav > ul > li {
+  line-height:60px;
+  margin: 0 0px;
+  padding:0;
+  text-align:center;
+  display:inline-block;
+  
+/*   background-color:green; */
+  min-width:120px;
 
-.dropdown:hover .dropdown-content {display: block;}
+} 
+#container > nav > ul > li > a {
+  position:relative;
+/*   background-color:red; */
+  margin: 0 20px;
+    color:white;
+}
+#container > nav > ul > li:hover {
+  border-bottom: 2px solid white;
+  background-color: #0088ff;
+}
+#container > nav > ul > .dropdown:hover {
+  border-bottom:none;
+}
+#container > nav > ul > .dropdown:hover >  .dd
+{
+  display:block;
+}
+.dropdown:hover > a .fa-caret-down {
+  display:none;
+}
+a {
+  text-decoration:none;
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+}
+
+#container > nav > ul > li > div {
+  position:absolute;
+  padding: 0 10px;
+  
+  background-color:black;
+  display:none;
+  background-color:aliceblue;
+  min-width:100px;
+}
+
+#container > nav > ul > li > div > ul {
+  margin:0px 0 10px 0;
+  padding:0;
+  list-style:none;
+}
+#u_a_c {
+  position:relative;
+  width:100%;
+/*   background-color:red; */
+}
+#up_arrow {
+  position:relative;
+  width:20px;
+  height:20px;
+  left:42%;
+  top:-10px;
+  background-color:aliceblue;
+  transform:rotate(45deg);
+}
+#container > nav > ul > li> div > ul > li:hover {
+  background-color:rgba(0,0,0,0.2);
+}
+#container > nav > ul > li > div > ul > li > a {
+  padding : 5px;
+    color:black;
+}
 </style>
+  </head>
 
 
-</head>
+  <body>
+  
+    
+    <div id="container">
 
-<body>
-
-
-  <nav class="menu" tabindex="0">
-    <header class="avatar">
-      <br><br>
-      <h6>OSA</h6>
-      <h2>{{request.user.first_name}}</h2>
-      <a href="/logout" class="nav-item nav-link">Logout</a>
-    </header>
- 
-    <ul>
-      <li tabindex="0"> <a style="color:floralwhite; text-decoration:none;" href="/admin-dashboard"><span>Dashboard</span></a> </li>
-      <li tabindex="0" > <a style="color:black; text-decoration:none;"><span>FACULTY</span>     
-        <div class="dropdown-content">
-        <a href="/admin-view-teacher">TEACHER RECORD</a>
-        <a href="/admin-add-teacher">ADD NEW TEACHER</a>
-        <a href="/admin-add-teacher">Teacher Request</a>
+      <nav>
+        <div id="logo">
+          SVSystem
         </div>
-      </a></li>
-      
-      <li tabindex="0"> <a style="color:black; text-decoration:none;"><span>Student</span>
-        <div class="dropdown-content">
-        <a href="/admin-view-student">STUDENT RECORD</a>
-        <a href="/admin-add-student">ADD NEW STUDENT</a>
-        </div>
+        <ul>
+          <li><a href="/admin-dashboard">Home</a></li>
+          <li class="dropdown" onmouseover="hover(this);" onmouseout="out(this);"><a href="#">Teacher &nbsp;<i class="fa fa-caret-down"></i></a>
+            <div class="dd">
+              <div id="up_arrow"></div>
+            <ul>
+              
+              <li><a href="/admin-view-teacher">TEACHER RECORD</a>></li>
+              <li><a href="/admin-add-teacher">ADD NEW TEACHER</a></li>
+            </ul>
+            </div>
+          </li>
+          
+          <li class="dropdown"><a>Student &nbsp;<i class="fa fa-caret-down"></i> </a>
+           <div class="dd">
+             <div id="u_a_c"><div id="up_arrow"></div></div>
+            <ul>
+              <li><a href="/admin-view-student">STUDENT RECORD</a></li>
+              <li><a href="/admin-add-student">ADD NEW STUDENT</a></li>
+              <li><a href="#">PROJECTS</a></li>
+            </ul>
+
+            <li class="dropdown"><a>Request &nbsp;<i class="fa fa-caret-down"></i> </a>
+           <div class="dd">
+             <div id="u_a_c"><div id="up_arrow"></div></div>
+            <ul>
+              <li><a href="/admin-add-appointment">add</a></li>
+              <li><a href="/admin-approve-appointment">approve</a></li>
+              
+            </ul>
+
+            <li class="dropdown"> <a> OSA &nbsp;<i class="fa fa-caret-down"></i> {{request.user.first_name}}</a>
+           <div class="dd">
+             <div id="u_a_c"><div id="up_arrow"></div></div>
+            <ul>
+              <li><a href="/logout" class="nav-item nav-link">Logout</a></li>
+            </ul>
+            
 
 
-      </a></li>
-      <li tabindex="0" class="icon-calendar"> <a style="color:black; text-decoration:none;" href="/admin-view-appointment"><span>Request</span>
-      <div class="dropdown-content">
-        <a href="/admin-add-appointment">add</a>
-         <a href="/admin-approve-appointment">approve</a>
-        </div>
-        </a></li>
-    </ul>
-  </nav>
 
-  <main>
+
+              
+            </ul>
+            </div>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>
+       
+    <main>
  <br><br><br><br>
 
     {% block content %}
@@ -145,14 +193,5 @@
     </footer>
 
   </main>
-
-
-</body>
-
+  </body>
 </html>
-
-
-
-
-
-
