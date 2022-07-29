@@ -6,7 +6,7 @@
   <head>
     <meta charset="UTF-8">
     <title> TUPC Supply Inventory System | Home </title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- Bootstrap cdn -->
@@ -46,7 +46,7 @@
           </a>
           
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Delivery</a></li>
+            <li><a class="dropdown-item" href="{% url 'inventorysystem_esupplydelivery' %}">Delivery</a></li>
             <li><a class="dropdown-item" href="#">View requested item</a></li>
             <li><a class="dropdown-item" href="#">Supply withdraw</a></li>
             <li><a class="dropdown-item" href="#">Status</a></li>
@@ -60,7 +60,7 @@
           </a>
           
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Delivery</a></li>
+            <li><a class="dropdown-item" href="{% url 'inventorysystem_eequipdelivery' %}">Delivery</a></li>
             <li><a class="dropdown-item" href="#">View requested item</a></li>
             <li><a class="dropdown-item" href="#">Equipment withdraw</a></li>
             <li><a class="dropdown-item" href="#">Equipment return</a></li>
